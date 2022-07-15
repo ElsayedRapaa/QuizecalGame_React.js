@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/QuizecalGame_React.js/static/css/main.9be18797.css",
+    "main.js": "/QuizecalGame_React.js/static/js/main.c7e8d8f6.js",
+    "index.html": "/QuizecalGame_React.js/index.html",
+    "main.9be18797.css.map": "/QuizecalGame_React.js/static/css/main.9be18797.css.map",
+    "main.c7e8d8f6.js.map": "/QuizecalGame_React.js/static/js/main.c7e8d8f6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9be18797.css",
+    "static/js/main.c7e8d8f6.js"
+  ]
+}
