@@ -1,13 +1,214 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700&display=swap');
+:root {
+  --main-bg: #F5F7FB;
+  --main-hover: #D6DBF9;
+  --button-bg: #4D5B9E;
+  --main-color-text: #293264;
+  --correct-color: #94D7A2;
+  --wrong-color: #F8BCBC;
+  --ball-top: #FFFAD1;
+  --ball-bottom: #DEEBF8;
+  --border-color: #DBDEF0;
+  --color-white: #FFF;
+  --transition: 300ms linear;
+  --container-width-lg: 75%;
+  --container-width-md: 85%;
+  --container-width-sm: 95%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: karla;
+}
+
+.container {
+  width: var(--container-width-lg);
+  margin: 50px auto 0;
+  position: relative;
+  border-radius: 20px;
+  padding: 50px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+  overflow: hidden;
+}
+
+.ball-top,
+.ball-bottom {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.ball-top {
+  background-color: var(--ball-top);
+  top: -100px;
+  right: -100px;
+}
+
+.ball-bottom {
+  background-color: var(--ball-bottom);
+  bottom: -150px;
+  left: -150px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--border-color);
+  color: var(--main-color-text);
+}
+
+.info > h4 {
+  font-weight: 300;
+}
+
+.info > h4 > span {
+  font-weight: 700;
+}
+
+.question {
+  width: 100%;
+  padding: 20px 0;
+}
+
+.question > h3 {
+  text-align: center;
+  border: 2px solid var(--border-color);
+  border-radius: 20px;
+  padding: 10px;
+  color: var(--main-color-text);
+  user-select: none;
+  cursor: default;
+}
+
+.answers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding-top: 20px;
+}
+
+.answers > div {
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 2px solid var(--border-color);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.answers > div.correct-answer {
+  border-color: var(--correct-color);
+}
+
+.answers > div.wrong-answer {
+  border-color: var(--wrong-color);
+}
+
+.answers > div.correct-answer .index {
+  background-color: var(--correct-color);
+}
+
+.answers > div.wrong-answer .index {
+  background-color: var(--wrong-color);
+}
+
+.answers > div.desabled {
+  pointer-events: none;
+}
+
+.index {
+  width: 15%;
+  background-color: var(--border-color);
+  color: #FFF;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 10px 0;
+  user-select: none;
+  cursor: default;
+  color: var(--main-color-text);
+}
+
+.answer-text {
+  width: 85%;
+  color: var(--main-color-text);
+  padding: 12px 0 12px 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: background var(--transition);
+}
+
+.answer-text:hover {
+  background-color: var(--main-hover);
+}
+
+.next-question {
+  width: 150px;
+  padding: 10px 0;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  background-color: var(--button-bg);
+  color: var(--color-white);
+  border: none;
+  border-radius: 10px;
+  transition: opacity var(--transition);
+}
+
+.next-question:hover {
+  opacity: 0.9
+}
+
+.next-question:focus {
+  outline: none;
+}
+
+.show-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.show-result > div {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--main-color-text);
+  user-select: none;
+  cursor: default;
+}
+
+/* Media Queriys (Medium Scrren) */
+
+@media screen and (max-width: 1024px) {
+  .container {
+    width: var(--container-width-md);
+  }
+}
+
+/* Media Queriys (Small Scrren) */
+
+@media screen and (max-width: 800px) {
+  .container {
+    width: var(--container-width-sm);
+  }
+  .info {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  .answers {
+    grid-template-columns: 1fr;
+  }
 }
